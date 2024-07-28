@@ -32,14 +32,11 @@ def test_PlotSLRCI():
     # Load the 'cars' dataset
     df_cars = data('cars')
 
-    # Prepare the data for the model
-    X = df_cars['speed'].values
-    y = df_cars['dist'].values
-    X = sm.add_constant(X)  # Adds a constant term to the predictor
-    # Fit the simple linear regression model
-    model = sm.OLS(y, X).fit()
+    X = sm.add_constant(df_cars['speed'])
+    y = df_cars['dist']
+    fit = sm.OLS(y, X).fit()
 
-    python_hw4.PlotSLRCI(model, X)
+    python_hw4.PlotSLRCI(fit, df_cars)
 
 
 # qTMat1
