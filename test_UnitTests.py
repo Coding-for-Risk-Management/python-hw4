@@ -5,6 +5,7 @@ import pandas as pd
 import statsmodels.api as sm
 import statsmodels.formula.api as smf
 from sklearn.datasets import load_iris
+from rdatasets import data
 
 import python_hw4
 
@@ -28,7 +29,17 @@ def test_MyLM():
 
 # qSLR2
 def test_PlotSLRCI():
-    python_hw4.PlotSLRCI()
+    # Load the 'cars' dataset
+    df_cars = data('cars')
+
+    # Prepare the data for the model
+    X = df_cars['speed'].values
+    y = df_cars['dist'].values
+    X = sm.add_constant(X)  # Adds a constant term to the predictor
+    # Fit the simple linear regression model
+    model = sm.OLS(y, X).fit()
+
+    python_hw4.PlotSLRCI(model, X)
 
 
 # qTMat1
