@@ -1,6 +1,9 @@
-import numpy as np
 import matplotlib.pyplot as plt
-from scipy.stats import norm
+from sklearn.datasets import load_iris
+import numpy as np
+import pandas as pd
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
 
 
 # qSLR1
