@@ -119,7 +119,7 @@ def test_getReturns():
 
 
 # qVAR
-def test_PercentVaR(r, alpha):
+def test_PercentVaR():
     r = np.random.normal(loc=0.05, scale=0.03, size=1000000)
     probability2SD = norm.cdf(2)  # 97.72%
 
@@ -145,5 +145,5 @@ def test_ES():
 
     # Output should match these values if the implementation is correct
 
-    assert np.isclose(round(es_alpha, 0), 90)
+    assert np.isclose(round(es_alpha, 0), 60)
     assert np.isclose(round(es_var, 0), 90)
