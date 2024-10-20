@@ -11,19 +11,9 @@ def MyLM(formula, data):
     fit = None  # populate the smf.ols function using the formula and fit it
     return fit
 
-
-# qSLR2
-def PlotSLRCI():
-    # Plot the data
-    # Plot the lower confidence interval
-    # Plot the upper confidence interval
-    return None
-
-
 # qTMat1
-def TMAT1(vec1, vec2):
+def TMAT1(vec1, vec2): 
     pass
-
 
 # qTMat2
 def Forecast_nPeriod(vec, tmat, n):
@@ -47,53 +37,31 @@ def Forecast_nPeriod_Recursive(vec, mat, n):
     # The final result is the n period ahead forecast
     pass
 
-
-# qBondDuration
-def getBondDuration(y, face, couponRate, m, ppy=1):
-    # your work here
-    duration = None  # Placeholder
-    return duration
-
-
-# qGetReturnsLag
-def getReturns(pricevec, lag=1):
-    # Calculate the returns based on the given lag
-    # YOUR WORK HERE
-    returns = None  # Placeholder
-    return returns
-
-
 # qVAR
-def PercentVaR(r, alpha):
+def VaR(r, confidence,principal=1):
     # This function returns the left tail value and displays a histogram
     # alpha = risk level
     # r = a vector of stock returns
     # out = positively stated value of r at the 1-alpha percentile
-
-    plt.hist(r, bins=50)
-    plt.show()
 
     # Get the lower tail value and return its absolute value
     # Placeholder for student work:
     out = None  # Placeholder for student work
     return out
 
-
 # qES
-def ES(losses, alpha=None, VaR=None):
+def ES(losses, confidence=None, VaR=None):
     # losses = positively stated loss values
     # alpha = risk level e.g. 99%
-    # VaR = either a dollar value or a percent
+    # VaR = either a dollar value
 
-    # Calculate Expected Shortfall based on the given parameters
     if VaR is not None:
         # Use the provided VaR to calculate Expected Shortfall
         # Placeholder for student work: calculate the average of all losses greater than VaR
-        out = None  # Placeholder for student work
     else:
         # Calculate VaR at the given alpha percentile if VaR is not provided
         VaR = np.percentile(losses, 100 * (1 - alpha))
         # Then calculate Expected Shortfall as the average of losses exceeding this VaR
-        out = losses[losses > VaR].mean()
-
+    
+    out = losses[qr > VaR].mean()
     return out
